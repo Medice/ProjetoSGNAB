@@ -10,3 +10,5 @@ Banco de Dados - Mysql
 
 Bootstrap Versão 3
 
+Servidor Apache e  SGDB PHPadmin operado pelo  XAMPP
+
