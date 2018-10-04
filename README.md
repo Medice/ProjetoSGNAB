@@ -8,6 +8,5 @@ Linguagem de Programação PHP (Versão 5) - orientado a objetos
 
 Banco de Dados - Mysql
 
-BootStrap 3.
-
+Bootstrap Versão 3
 
