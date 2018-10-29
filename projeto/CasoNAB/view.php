@@ -1,6 +1,6 @@
 <?php
 //including the database connection file
-include_once("../sessao.php");
+//include_once("../sessao.php");
 include_once("../config.php");
 //fetching data in descending order (lastest entry first)
 //$result = mysql_query("SELECT * FROM users ORDER BY id DESC"); // mysql_query is deprecated

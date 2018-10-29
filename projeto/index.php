@@ -1,29 +1,38 @@
 <?php
 //including the database connection file
-//include_once("config.php");
-
+//include_once("sessao.php");
+include_once("config.php");
 //fetching data in descending order (lastest entry first)
 //$result = mysql_query("SELECT * FROM users ORDER BY id DESC"); // mysql_query is deprecated
-//$result = mysqli_query($mysqli, "SELECT * FROM users ORDER BY id DESC"); // using mysqli_query instead
+$result = mysqli_query($mysqli, "SELECT * FROM users ORDER BY id DESC"); // using mysqli_query instead
 ?>
 
 <html>
-<head>
-	<title>Login</title>
+<head>	
+	<title>Homepage</title>
 </head>
 
 <body>
-	<form method="post" action="conecta_sessao.php" id="formlogin" name="formlogin" >
-    <fieldset id="fie">
-    <legend>LOGIN</legend><br />
-    <label>NOME : </label>
-    <input type="text" name="login" id="login"  /><br />
-    <label>SENHA :</label>
-    <input type="password" name="senha" id="senha" /><br />
-    <input type="submit" value="LOGAR	"  />
-    </fieldset>
-    </form>
+<a href="add.php">Add New Data</a><br/><br/>
+
+<table>
+    
+    <tr bgcolor='#CCCCCC'>
+    	<td>Name</td>
+    	<td>Age</td>
+    	<td>Email</td>
+    	<td>Update</td>
+    </tr>
+    <?php 
+    //while($res = mysql_fetch_array($result)) { // mysql_fetch_array is deprecated, we need to use mysqli_fetch_array 
+    while($res = mysqli_fetch_array($result)) { 		
+    	echo "<tr>";
+    	echo "<td>".$res['name']."</td>";
+    	echo "<td>".$res['age']."</td>";
+    	echo "<td>".$res['email']."</td>";
+    	echo "<td><a href=\"edit.php?id=$res[id]\">Edit</a> | <a href=\"delete.php?id=$res[id]\" onClick=\"return confirm('Are you sure you want to delete?')\">Delete</a></td>";		
+    }
+    ?>
+</table>
 </body>
 </html>
-
-

@@ -1,6 +1,6 @@
 <?php
 // including the database connection file
-include_once("../sessao.php");
+//include_once("../sessao.php");
 include_once("../config.php");
 
 if(isset($_POST['idCasoNAB']))
