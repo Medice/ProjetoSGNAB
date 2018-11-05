@@ -39,7 +39,21 @@ class Crud extends DbConfig
 	
 	public function delete($id, $table) 
 	{ 
-		$query = "DELETE FROM $table WHERE id = $id";
+		$query = "DELETE FROM $table WHERE idHistorico = $id";
+		
+		$result = $this->connection->query($query);
+	
+		if ($result == false) {
+			echo 'Error: cannot delete id ' . $id . ' from table ' . $table;
+			return false;
+		} else {
+			return true;
+		}
+	}
+
+	public function deletocorrencia($id, $table) 
+	{ 
+		$query = "DELETE FROM $table WHERE idOcorrencia = $id";
 		
 		$result = $this->connection->query($query);
 	
