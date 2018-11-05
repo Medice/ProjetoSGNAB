@@ -1,0 +1,163 @@
+                                  Código do Modelo Físico (MySql)
+CREATE TABLE Ocorrencia (
+  idOcorrencia INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+  NomeOcorrencia VARCHAR(50) NULL,
+  Descricao VARCHAR(50) NULL,
+  PRIMARY KEY(idOcorrencia)
+);
+
+CREATE TABLE Usuario (
+  idUsuario INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+  NomeUsuario VARCHAR(50) NULL,
+  NomeCargo VARCHAR(50) NULL,
+  Tipo VARCHAR(50) NULL,
+  Ramal VARCHAR(50) NULL,
+  Email VARCHAR(50) NULL,
+  TelefoneCelular VARCHAR(50) NULL,
+  TelefoneFix VARCHAR(50) NULL,
+  Senha VARCHAR(50) NULL,
+  DataCadastro DATETIME NULL,
+  PRIMARY KEY(idUsuario)
+);
+
+CREATE TABLE AreaGeografica (
+  idAreaGeografica INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+  NomeAreaGeografica VARCHAR(50) NULL,
+  DadosComplementares VARCHAR(50) NULL,
+  PRIMARY KEY(idAreaGeografica)
+);
+
+CREATE TABLE Posto (
+  idPosto INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+  AreaGeografica_idAreaGeografica INTEGER UNSIGNED NOT NULL,
+  NomePosto VARCHAR(50) NULL,
+  NomeOficialPais VARCHAR(50) NULL,
+  Subordinacao VARCHAR(50) NULL,
+  Endereco VARCHAR(50) NULL,
+  TelefoneGeral VARCHAR(50) NULL,
+  TelefonePlantao VARCHAR(50) NULL,
+  Email VARCHAR(50) NULL,
+  Fax VARCHAR(50) NULL,
+  Site VARCHAR(50) NULL,
+  Jurisdicao VARCHAR(800) NULL,
+  AlertaAosViajantes VARCHAR(800) NULL,
+  DadosComplementares VARCHAR(200) NULL,
+  PRIMARY KEY(idPosto),
+  INDEX Posto_FKIndex1(AreaGeografica_idAreaGeografica),
+  FOREIGN KEY(AreaGeografica_idAreaGeografica)
+    REFERENCES AreaGeografica(idAreaGeografica)
+      ON DELETE NO ACTION
+      ON UPDATE NO ACTION
+);
+
+CREATE TABLE ConsuladoHonorario (
+  idConsuladoHonorario INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+  Posto_idPosto INTEGER UNSIGNED NOT NULL,
+  NomeConsuladoHonorario VARCHAR(50) NULL,
+  NomeConsulHonorario VARCHAR(50) NULL,
+  NomeViceConsulHonorario VARCHAR(50) NULL,
+  TelefoneGeral VARCHAR(50) NULL,
+  TelefonePlantao VARCHAR(50) NULL,
+  Email VARCHAR(50) NULL,
+  Fax VARCHAR(50) NULL,
+  Site VARCHAR(50) NULL,
+  Jurisdicao VARCHAR(800) NULL,
+  DadosComplementares VARCHAR(200) NULL,
+  PRIMARY KEY(idConsuladoHonorario),
+  INDEX ConsuladoHonorario_FKIndex1(Posto_idPosto),
+  FOREIGN KEY(Posto_idPosto)
+    REFERENCES Posto(idPosto)
+      ON DELETE NO ACTION
+      ON UPDATE NO ACTION
+);
+
+CREATE TABLE CasoGeral (
+  idCasoGeral INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+  Posto_idPosto INTEGER UNSIGNED NOT NULL,
+  TipoCasoGeral VARCHAR(50) NULL,
+  DataEmissao VARCHAR(50) NULL,
+  Descricao VARCHAR(50) NULL,
+  PRIMARY KEY(idCasoGeral),
+  INDEX CasoGeral_FKIndex1(Posto_idPosto),
+  FOREIGN KEY(Posto_idPosto)
+    REFERENCES Posto(idPosto)
+      ON DELETE NO ACTION
+      ON UPDATE NO ACTION
+);
+
+CREATE TABLE CasoNAB (
+  idCasoNAB INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+  Ocorrencia_idOcorrencia INTEGER UNSIGNED NOT NULL,
+  Posto_idPosto INTEGER UNSIGNED NOT NULL,
+  NomeCasoNAB VARCHAR(100) NULL,
+  StatusCasoNAB VARCHAR(50) NULL,
+  DataNascimento DATE NULL,
+  TelefoneFix VARCHAR(50) NULL,
+  TelefoneCelular VARCHAR(50) NULL,
+  Email VARCHAR(50) NULL,
+  DadosComplementares VARCHAR(200) NULL,
+  DataCadastro DATE NULL,
+  PRIMARY KEY(idCasoNAB),
+  INDEX CasoNAB_FKIndex1(Posto_idPosto),
+  INDEX CasoNAB_FKIndex2(Ocorrencia_idOcorrencia),
+  FOREIGN KEY(Posto_idPosto)
+    REFERENCES Posto(idPosto)
+      ON DELETE NO ACTION
+      ON UPDATE NO ACTION,
+  FOREIGN KEY(Ocorrencia_idOcorrencia)
+    REFERENCES Ocorrencia(idOcorrencia)
+      ON DELETE NO ACTION
+      ON UPDATE NO ACTION
+);
+
+CREATE TABLE OrdemDeServico (
+  Usuario_idUsuario INTEGER UNSIGNED NOT NULL,
+  CasoNAB_idCasoNAB INTEGER UNSIGNED NOT NULL,
+  StatusDaOrdem VARCHAR(50) NULL,
+  NivelDeImportancia VARCHAR(50) NULL,
+  Descricao VARCHAR(200) NULL,
+  PRIMARY KEY(Usuario_idUsuario, CasoNAB_idCasoNAB),
+  INDEX Usuario_has_CasoNAB_FKIndex1(Usuario_idUsuario),
+  INDEX Usuario_has_CasoNAB_FKIndex2(CasoNAB_idCasoNAB),
+  FOREIGN KEY(Usuario_idUsuario)
+    REFERENCES Usuario(idUsuario)
+      ON DELETE NO ACTION
+      ON UPDATE NO ACTION,
+  FOREIGN KEY(CasoNAB_idCasoNAB)
+    REFERENCES CasoNAB(idCasoNAB)
+      ON DELETE NO ACTION
+      ON UPDATE NO ACTION
+);
+
+CREATE TABLE Consulente (
+  idConsulente INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+  CasoNAB_idCasoNAB INTEGER UNSIGNED NOT NULL,
+  NomeConsulente VARCHAR(50) NULL,
+  TipoConsulente VARCHAR(50) NULL,
+  Email VARCHAR(50) NULL,
+  Endereco VARCHAR(50) NULL,
+  Cep VARCHAR(50) NULL,
+  TelefoneFix VARCHAR(50) NULL,
+  TelefoneCelular VARCHAR(50) NULL,
+  PRIMARY KEY(idConsulente),
+  INDEX Consulente_FKIndex1(CasoNAB_idCasoNAB),
+  FOREIGN KEY(CasoNAB_idCasoNAB)
+    REFERENCES CasoNAB(idCasoNAB)
+      ON DELETE NO ACTION
+      ON UPDATE NO ACTION
+);
+
+CREATE TABLE Historico (
+  idHistorico INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+  CasoNAB_idCasoNAB INTEGER UNSIGNED NOT NULL,
+  TipoHistorico VARCHAR(50) NULL,
+  DataEmissao DATETIME NULL,
+  Descricao VARCHAR(200) NULL,
+  PRIMARY KEY(idHistorico),
+  INDEX Historico_FKIndex1(CasoNAB_idCasoNAB),
+  FOREIGN KEY(CasoNAB_idCasoNAB)
+    REFERENCES CasoNAB(idCasoNAB)
+      ON DELETE NO ACTION
+      ON UPDATE NO ACTION
+);
+ 
