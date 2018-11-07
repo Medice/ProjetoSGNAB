@@ -25,34 +25,20 @@
             Caso Nab:<br>
                 <input type="text"  class="form-control" name="CasoNAB_idCasoNAB"><br><br>
 </div>
-            <div class="form-group">
             Nome Consulente:<br>
-                <input type="text" class="form-control" name="NomeConsulente"><br><br>
-</div>            
-            <div class="form-group">
+                <input type="text"  class="form-control" name="NomeConsulente"><br><br>
             Tipo Consulente:<br>
                 <input type="text" class="form-control" name="TipoConsulente"><br><br>
-</div>
-            <div class="form-group">
             Email:<br>
                 <input type="text" class="form-control" name="Email"><br><br>
-</div>            
-            <div class="form-group">
             Endereco:<br>
                 <input type="text" class="form-control" name="Endereco"><br><br>
-</div>            
-            <div class="form-group">
             Cep:<br>
                 <input type="text" class="form-control" name="Cep"><br><br>
-</div>            
-            <div class="form-group">
             Telefone Fixo:<br>
                 <input type="text" class="form-control" name="TelefoneFix"><br><br>
-</div>            
-            <div class="form-group">
             Telefone Celular:<br>
-                <input type="text" class="form-control" name="TelefoneCelular"><br><br>
-</div>                
+                <input type="text"  class="form-control" name="TelefoneCelular"><br><br>
                 <input type="submit" class="btn btn-default" value="Salvar">
         </form> 
     </fieldset>
