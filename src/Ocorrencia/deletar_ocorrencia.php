@@ -16,6 +16,10 @@ if ($result) {
 
 
 	header("Location: vizualizar_ocorrencia.php");
+}else{
+
+	echo "<div class='alert alert-success' >Não Cadastrado!! <br/><a href='vizualizar_ocorrencia.php'>Visualizar Tabela</a> </div>";
+
 }
 
 

@@ -95,9 +95,19 @@ while($res = mysqli_fetch_array($result))
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+	<script rel="stylesheet"  type="text/css" src="../js/bootstrap.min.js"></script>
+    
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css" />
     <title>Document</title>
 </head>
 <body>
+
+<div class="row">
+				
+				<div class="col-sm-4"></div>
+			<div class="col-sm-4">
+
 <a href="view.php">CasoNAB</a>
 	<br/><br/>
 	
@@ -105,49 +115,52 @@ while($res = mysqli_fetch_array($result))
 		<table border="0">
 			<tr> 
 				<td>Ocorrencia_idOcorrencia</td>
-				<td><input type="text" name="Ocorrencia_idOcorrencia" value="<?php echo $Ocorrencia_idOcorrencia;?>"></td>
+				<td><input type="text" class="form-control"  name="Ocorrencia_idOcorrencia" value="<?php echo $Ocorrencia_idOcorrencia;?>"></td>
 			</tr>
 			<tr> 
 				<td>Posto_idPosto</td>
-				<td><input type="text" name="Posto_idPosto" value="<?php echo $Posto_idPosto;?>"></td>
+				<td><input type="text" class="form-control"  name="Posto_idPosto" value="<?php echo $Posto_idPosto;?>"></td>
 			</tr>
 			<tr> 
 				<td>NomeCasoNAB</td>
-				<td><input type="text" name="NomeCasoNAB" value="<?php echo $NomeCasoNAB;?>"></td>
+				<td><input type="text" class="form-control"  name="NomeCasoNAB" value="<?php echo $NomeCasoNAB;?>"></td>
 			</tr>
 			<tr> 
 				<td>StatusCasoNAB</td>
-				<td><input type="text" name="StatusCasoNAB" value="<?php echo $StatusCasoNAB;?>"></td>
+				<td><input type="text" class="form-control"  name="StatusCasoNAB" value="<?php echo $StatusCasoNAB;?>"></td>
 			</tr>
 			<tr> 
 				<td>DataNascimento</td>
-				<td><input type="date" name="DataNascimento" value="<?php echo $DataNascimento;?>"></td>
+				<td><input type="date" class="form-control"  name="DataNascimento" value="<?php echo $DataNascimento;?>"></td>
 			</tr>
 			<tr> 
 				<td>TelefoneFix</td>
-				<td><input type="text" name="TelefoneFix" value="<?php echo $TelefoneFix;?>"></td>
+				<td><input type="text" class="form-control"  name="TelefoneFix" value="<?php echo $TelefoneFix;?>"></td>
 			</tr>
 			<tr> 
 				<td>TelefoneCelular</td>
-				<td><input type="text" name="TelefoneCelular" value="<?php echo $TelefoneCelular;?>"></td>
+				<td><input type="text" class="form-control"  name="TelefoneCelular" value="<?php echo $TelefoneCelular;?>"></td>
 			</tr>
 			<tr> 
 				<td>Email</td>
-				<td><input type="text" name="Email" value="<?php echo $Email;?>"></td>
+				<td><input type="text" class="form-control"  name="Email" value="<?php echo $Email;?>"></td>
 			</tr>
 			<tr> 
 				<td>DadosComplementares</td>
-				<td><input type="text" name="DadosComplementares" value="<?php echo $DadosComplementares;?>"></td>
+				<td><input type="text" class="form-control"  name="DadosComplementares" value="<?php echo $DadosComplementares;?>"></td>
 			</tr>
 			<tr> 
 				<td>DataCadastro</td>
-				<td><input type="date" name="DataCadastro" value="<?php echo $DataCadastro;?>"></td>
+				<td><input type="date" class="form-control"  name="DataCadastro" value="<?php echo $DataCadastro;?>"></td>
 			</tr>
 			<tr>
 				<td><input type="hidden" name="idCasoNAB" value=<?php echo $idCasoNAB;?>></td>
-				<td><input type="submit" name="update" value="Update"></td>
+				<td><input type="submit" class="btn btn-default"  name="update" value="Update"></td>
 			</tr>
 		</table>
 	</form>
+
+</div>
+	</div>
 </body>
 </html>

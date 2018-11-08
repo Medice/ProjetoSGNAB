@@ -34,21 +34,7 @@ foreach($result as $res) {
 <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css" />
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <link rel="stylesheet" type="text/css" href="../css/index.css" />
-<script type="text/javascript">
-                function validate() {
-                    if (document.form1.name.value == '') {
-                        alert('Please provide your name');
-                        document.form1.name.focus();                
-                        return false;
-                    }
-                    if (document.form1.email.value == '') {
-                        alert('Please provide your email');
-                        document.form1.email.focus();
-                        return false;
-                    }
-                    return true;
-                }
-            </script>
+
 
 </head>
 <body>
@@ -123,7 +109,7 @@ foreach($result as $res) {
 
 <div class="form-group col-md-6">
 
-      <label >Codigo:</label>
+      <label >Nome:</label>
       
       <input type="text" class="form-control"  name="nomeocorrencia" value="<?php echo $nomeocorrencia;?>">
       

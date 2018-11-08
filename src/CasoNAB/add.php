@@ -21,6 +21,8 @@
 
 	<form action="addregistra.php" method="post" name="form11">
 	
+
+	
 			   <div class="form-group">
 				<label>Ocorrencia_idOcorrencia</label>
 				<input  class="form-control"  type="text" name="Ocorrencia_idOcorrencia">
@@ -61,9 +63,9 @@
 				<label>DataCadastro</label>
 				<input type="date" class="form-control" name="DataCadastro">
 				</div> 
-			
+				<div class="form-group">
 			<input type="submit" class="btn btn-default" name="Submit" value="Add">
-		
+			</div>
 	
 	</form>
 </div>

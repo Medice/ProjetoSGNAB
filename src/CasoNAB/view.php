@@ -41,7 +41,7 @@ $result = mysqli_query($mysqli, "SELECT * FROM CasoNAB ORDER BY idCasoNAB DESC")
     	<td>Email</td>
     	<td>DadosComplementares</td>
 		<td>DataCadastro</td>
-		<td>Operações</td>
+		
     </tr>
     <?php 
     //while($res = mysql_fetch_array($result)) { // mysql_fetch_array is deprecated, we need to use mysqli_fetch_array 

@@ -10,21 +10,7 @@
 <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css" />
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <link rel="stylesheet" type="text/css" href="../css/index.css" />
-<script type="text/javascript">
-                function validate() {
-                    if (document.form1.name.value == '') {
-                        alert('Please provide your name');
-                        document.form1.name.focus();                
-                        return false;
-                    }
-                    if (document.form1.email.value == '') {
-                        alert('Please provide your email');
-                        document.form1.email.focus();
-                        return false;
-                    }
-                    return true;
-                }
-            </script>
+
 
 </head>
 <body>
@@ -85,16 +71,18 @@
 
             <div id="main" class="container-fluid"><h3 class="page-header">Adicionar Hístorico</h3></div>    
             <div id="msg"></div>
-            <!--<form action="add.php" method="post" name="form1" onsubmit = "return(validate());">-->
+            
                     
             <form width="25%" action="inserir_ocorrencia.php" method="post">
             <div class="form-group">
               <label>Nome:</label>
-              <input size="2" type="text" class="form-control" name="nomeocorrencia">
+              <input size="2" required="required" type="text" class="form-control" name="nomeocorrencia">
+                 
             </div>
             <div class="form-group">
               <label>Descrisão:</label>
-              <input type="text" class="form-control" name="descrisao">
+           
+              <textarea size="2" rows="5"   name="descrisao"  class="form-control" ></textarea> 
             </div>
             <button type="submit" name="Submit" class="btn btn-default">Cadastrar</button>
           </form>

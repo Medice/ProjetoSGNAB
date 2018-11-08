@@ -40,16 +40,7 @@ $result = mysqli_query($mysqli, "SELECT * FROM CasoNAB ORDER BY idCasoNAB DESC")
 			</a>
 		</div>
 
-		<!-- Collect the nav links, forms, and other content for toggling -->
-		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">      
-			<form class="navbar-form navbar-left" method="GET" role="search">
-				<div class="form-group">
-					<input type="text" name="q" class="form-control" placeholder="Search">
-				</div>
-				<button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-search"></i></button>
-			</form>
-			
-			</div><!-- /.navbar-collapse -->
+	
 		</div><!-- /.container-fluid -->
 	</nav>  	<div class="container-fluid main-container">
   		<div class="col-md-2 sidebar">
@@ -92,11 +83,13 @@ $result = mysqli_query($mysqli, "SELECT * FROM CasoNAB ORDER BY idCasoNAB DESC")
     	<td>Ocorrencia_idOcorrencia</td>
     	<td>Posto_idPosto</td>
     	<td>NomeCasoNAB</td>
-    	
     	<td>Email</td>
     	<td>DadosComplementares</td>
 		<td>DataCadastro</td>
-		<td>Operações</td>
+		<td>Cadastrar Histórico</td>
+		<td>Visualizar Histórico</td>
+		<td>Editar Caso</td>
+		<td>Delitar Caso</td>
     </tr>
     <?php 
     //while($res = mysql_fetch_array($result)) { // mysql_fetch_array is deprecated, we need to use mysqli_fetch_array 

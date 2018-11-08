@@ -7,30 +7,6 @@ $crud = new Crud();
 $Codigonab = $crud->escape_string($_GET['id']);
 
 
-function montaCombo($nome, $rs, $valor, $descricao){
-   	echo("<select name='$nome' class='combo'>");
-	echo("t<option value=''>--Selecione--</option>");
-	while ($obj = mysql_fetch_object($rs)){			
-		echo("t<option value='".$obj->$valor."' > ". $obj->$descricao." </option>n");
-	}
-	echo("</select>n");
-}
-
-
-
-//Conexão com o banco de dados
-mysql_connect('localhost', 'root', '') or die ('Erro ao conectar com o servidor');
-mysql_select_db('casonab') or die ('Erro ao conectar com o banco de dados');
-
-//consulta
-$rs = mysql_query("SELECT idHistorico, TipoHistorico FROM historico ORDER BY TipoHistorico");
-
-//chama a função
-montaCombo('cars', $rs, 'idHistorico', 'TipoHistorico');
-
-
-
-
 ?>
 
 <!DOCTYPE html>
@@ -44,21 +20,7 @@ montaCombo('cars', $rs, 'idHistorico', 'TipoHistorico');
 <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css" />
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <link rel="stylesheet" type="text/css" href="../css/index.css" />
-<script type="text/javascript">
-                function validate() {
-                    if (document.form1.name.value == '') {
-                        alert('Please provide your name');
-                        document.form1.name.focus();                
-                        return false;
-                    }
-                    if (document.form1.email.value == '') {
-                        alert('Please provide your email');
-                        document.form1.email.focus();
-                        return false;
-                    }
-                    return true;
-                }
-            </script>
+
 
 </head>
 <body>
@@ -126,15 +88,15 @@ montaCombo('cars', $rs, 'idHistorico', 'TipoHistorico');
                         <input type="hidden" class="form-control"  name="casonab" value="<?php echo $Codigonab;?>">
                         <div class="form-group col-md-6">
                           <label for="Tipohistorico">Tipo Historico:</label>
-                          <input type="text" class="form-control"  name="Tipohistorico">
+                          <input type="text" required="required" class="form-control"  name="Tipohistorico">
                         </div>
                         <div class="form-group col-md-4">
                           <label for="Dataemissao">Data da Emissao:</label>
-                          <input type="date" class="form-control" name="Dataemissao">
+                          <input type="date" required="required" class="form-control" name="Dataemissao">
                         </div>
                         <div class="form-group col-md-10">
                                 <label for="descrisao">Descrisao:</label>
-                                <textarea rows="5"  name="descrisao"  class="form-control" ></textarea>        
+                                <textarea rows="5" required="required"  name="descrisao"  class="form-control" ></textarea>        
                         </div>
                         <div class="col-md-12">
                           <button type="submit" name="Submit" class="btn btn-primary">Salvar</button>
